@@ -39,6 +39,7 @@ export default function Home() {
     };
     const perPage = 5;
 
+    console.log(data);
 
     if (!isAuth) {
         return <Redirect to="/login" />
@@ -65,11 +66,11 @@ export default function Home() {
                     })
                 }
             </div>
-            <div>
+            <div style={{marginBottom: 40}}>
                 <Pagination
                     currentPage={page}
                     onClickCallback={(page) => changePageTo(page)}
-                    total={5}
+                    total={Math.ceil(30/perPage)}
                 />
             </div>
         </div>

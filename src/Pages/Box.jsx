@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function BoxGrid({id,title,description,data,url}) {
   return (
-    <Box sx={{ m: 2 }}>
+    <Box sx={{ m: 2 }} xl={3} xs={4} md={6} sm={12}>
       <Grid container >
         <Grid item xs={12}>
           <Item>{id}
