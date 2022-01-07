@@ -3,8 +3,8 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Search from "../Pages/Search";
 
-export default function AllRoutes(){
 
+export default function AllRoutes(){
     return(
         <>
           <Switch>

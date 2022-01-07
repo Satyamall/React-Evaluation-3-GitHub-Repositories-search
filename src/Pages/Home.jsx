@@ -1,7 +1,7 @@
 
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 import { getDataSuccess } from "../Redux/app/action";
 import BoxGrid from "./Box";
 import Pagination from "./Pagination";
@@ -21,15 +21,11 @@ export default function Home() {
             })
     }
 
-    const {data}=useSelector((state)=>state.app)
     const handleSearch = () => {
         getData(text,page)
     }
 
-    useEffect(() => {
-       handleSearch(text,page)
-    }, [text,page])
-
+    
     const changePageTo = (num) => {
         if (num <= 1) {
             setPage(1);
@@ -38,8 +34,8 @@ export default function Home() {
         setPage(num);
     };
     const perPage = 5;
-
-    console.log(data);
+    
+    const {data}=useSelector((state)=>state.app)
 
     if (!isAuth) {
         return <Redirect to="/login" />
@@ -51,7 +47,9 @@ export default function Home() {
                 <input value={text} placeholder="Search Repository" onChange={(e) => setText(e.target.value)} />
                 <button onClick={handleSearch}>SEARCH</button>
             </div>
-
+            <div>
+                <Link to={`/search/?q=${text}`}>Go To Search Repositories Page</Link>
+            </div>
             <div>
                 {
                     data?.filter(
@@ -66,7 +64,7 @@ export default function Home() {
                     })
                 }
             </div>
-            <div style={{marginBottom: 40}}>
+            <div style={{marginBottom: 20}}>
                 <Pagination
                     currentPage={page}
                     onClickCallback={(page) => changePageTo(page)}
