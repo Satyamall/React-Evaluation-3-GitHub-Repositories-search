@@ -3,7 +3,6 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Search from "../Pages/Search";
 
-
 export default function AllRoutes(){
     return(
         <>
@@ -14,7 +13,7 @@ export default function AllRoutes(){
              <Route exact path="/login">
                  <Login/>
              </Route>
-             <Route exact path="/search">
+             <Route path="/:id">
                  <Search/>
              </Route>
           </Switch>

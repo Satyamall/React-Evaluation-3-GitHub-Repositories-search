@@ -10,21 +10,24 @@ export default function Search() {
     const isAuth = useSelector((state) => state.auth.isAuth);
 
     const [page, setPage] = useState(1);
+    // const [data,setData]=useState([]);
 
-    const {repo} = useParams();
+    const {id} = useParams();
+    // console.log(id,"Satya")
     const dispatch = useDispatch();
-    const getData = (repo) => {
-        return fetch(`https://api.github.com/search/repositories?q=${repo}`)
+    const getData = (id) => {
+        return fetch(`https://api.github.com/search/repositories?q=${id}`)
             .then((res) => res.json())
             .then((res) => {
                 const getdata= getDataSuccess(res.items);
                 dispatch(getdata)
+                // setData(res.items)
             })
     }
 
     useEffect(()=>{
-        getData(repo);
-    },[repo])
+        getData(id);
+    },[id])
 
     const { data } = useSelector((state) => state.app)
 
@@ -43,7 +46,7 @@ export default function Search() {
     }
     return (
         <div>
-            <h1>Search {repo} Repositories</h1>
+            <h1>Search {id} Repositories</h1>
             <div>
                 {
                     data?.filter(

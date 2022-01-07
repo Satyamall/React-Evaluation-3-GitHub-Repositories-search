@@ -1,7 +1,7 @@
 
 import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect,Link } from "react-router-dom";
+import { Redirect, useParams,Link} from "react-router-dom";
 import { getDataSuccess } from "../Redux/app/action";
 import BoxGrid from "./Box";
 import Pagination from "./Pagination";
@@ -42,13 +42,13 @@ export default function Home() {
     }
     return (
         <div>
+             <div>
+            <Link to={`/${text}`}>SEARCH Repository Page</Link>
+            </div>
             <h1>Search For Repositories</h1>
             <div>
                 <input value={text} placeholder="Search Repository" onChange={(e) => setText(e.target.value)} />
                 <button onClick={handleSearch}>SEARCH</button>
-            </div>
-            <div>
-                <Link to={`/search/?q=${text}`}>Go To Search Repositories Page</Link>
             </div>
             <div>
                 {
